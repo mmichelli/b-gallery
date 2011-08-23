@@ -1,0 +1,157 @@
+.GalleryBoylston{
+  position: relative;
+  padding-bottom: 25px;
+  width: 986px;
+  margin: 0 auto;
+
+}
+
+.GalleryBoylston .slider{
+  position: relative;
+  overflow: visible;
+  width: 986px;
+  height: 530px;
+}
+
+.GalleryBoylston .slider .slide{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  display: none;
+
+}
+
+.GalleryBoylston .slider .slide.top,
+.GalleryBoylston .slider .slide.bottom
+{
+  display: block;
+  z-index: 100;
+
+}
+
+
+.GalleryBoylston .slider .slide.bottom
+{
+  z-index: 99;
+
+}
+
+.GalleryBoylston .slider .slide .icon{
+  position: absolute;
+}
+
+.GalleryBoylston .slider .slide .icon .bubble{
+  display: none;
+  width: 241px;
+  background: url("../images/ububble.png?t=1") 50% 0 no-repeat;
+  margin: 0 0 0 -104px;
+  padding: 30px 0 5px 0;
+  top: 40px;
+  position: absolute;
+  border: 1px solid #a0a0a0;
+  border-width: 0 0 1px 0;
+
+
+
+
+}
+
+
+.GalleryBoylston .slider .slide .icon .bubble p,
+.GalleryBoylston .slider .slide .icon .bubble h3 {
+  padding: 0 20px 10px 15px;
+  margin: 0px;
+
+}
+
+
+.GalleryBoylston .slider .slide .icon.top .bubble{
+  bottom: 40px;
+  top: initial;
+  background: url("../images/dbubble.png?t=1") 50% 100% no-repeat;
+  padding: 10px 0 20px 0;
+   border-width: 1px 0 0 0;
+}
+
+
+
+
+.GalleryBoylston .slider .slide .icon a{
+  display: block;
+  background: url("../images/icon_point.png?t=1");
+  width: 38px;
+  height: 39px;
+}
+
+.GalleryBoylston .slider .slide .icon.active a{
+  background: url("../images/icon_active.png?t=1");
+}
+
+
+.GalleryBoylston .Navigation .next,
+.GalleryBoylston .Navigation .previous{
+
+  position: absolute;
+  top: 50%;
+  width: 100px;
+  height: 300px;
+  margin-top: -160px;
+  text-indent: -9999px;
+  font-size: 0;
+  background: url("../images/larr_gal.png") no-repeat 0 50%;
+
+}
+.GalleryBoylston .Navigation .next,
+.GalleryBoylston .Navigation .previous,
+.GalleryBoylston .Navigation .counter{
+  z-index: 200;
+}
+
+
+.GalleryBoylston .Navigation .next{
+  right: 10px;
+  text-indent: -9999px;
+  background: url("../images/rarr_gal.png") no-repeat no-repeat 100% 50%;
+
+}
+
+
+.GalleryBoylston .Navigation .previousslide,  .GalleryBoylston .Navigation .nextslide{
+  text-indent: -9999px;
+  background: url("../images/rarr_black.png") no-repeat no-repeat 100% 50%;
+  display: block;
+  float: left;
+  width:18px;
+  height: 16px;
+}
+.GalleryBoylston .Navigation .previousslide{
+  background: url("../images/larr_black.png") no-repeat no-repeat 0 50%;
+}
+
+.GalleryBoylston .Navigation .count
+{
+  float: left;
+
+}
+
+.GalleryBoylston .Navigation .previous{
+
+  left: 10px;
+
+}
+
+.GalleryBoylston .Navigation .counter{
+
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  overflow: hidden;
+}
+
+
+
+
+
+
+
+
