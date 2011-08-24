@@ -57,6 +57,16 @@
 }
 
 
+.GalleryBoylston .slider .slide .icon.top .bubble{
+  bottom: 40px;
+  top: initial;
+  top: auto;
+  background: url("../images/dbubble.png?t=1") 50% 100% no-repeat;
+  padding: 10px 0 20px 0;
+  border-width: 1px 0 0 0;
+}
+
+
 .GalleryBoylston .slider .slide .icon .bubble p,
 .GalleryBoylston .slider .slide .icon .bubble h3 {
   padding: 0 20px 10px 15px;
@@ -65,13 +75,6 @@
 }
 
 
-.GalleryBoylston .slider .slide .icon.top .bubble{
-  bottom: 40px;
-  top: initial;
-  background: url("../images/dbubble.png?t=1") 50% 100% no-repeat;
-  padding: 10px 0 20px 0;
-   border-width: 1px 0 0 0;
-}
 
 
 
@@ -111,21 +114,21 @@
 .GalleryBoylston .Navigation .next{
   right: 10px;
   text-indent: -9999px;
-  background: url("../images/rarr_gal.png") no-repeat no-repeat 100% 50%;
+  background: url("../images/rarr_gal.png") no-repeat  100% 50%;
 
 }
 
 
 .GalleryBoylston .Navigation .previousslide,  .GalleryBoylston .Navigation .nextslide{
   text-indent: -9999px;
-  background: url("../images/rarr_black.png") no-repeat no-repeat 100% 50%;
+  background: url("../images/rarr_black.png") no-repeat 100% 50%;
   display: block;
   float: left;
   width:18px;
   height: 16px;
 }
 .GalleryBoylston .Navigation .previousslide{
-  background: url("../images/larr_black.png") no-repeat no-repeat 0 50%;
+  background: url("../images/larr_black.png") no-repeat  0 50%;
 }
 
 .GalleryBoylston .Navigation .count
