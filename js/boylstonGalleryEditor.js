@@ -65,8 +65,8 @@ $(function() {
                                                  },
                                                  
                                                  updateBubble: function(){
-                                                   
-                                                     console.log("--",this); 
+                                                     
+                                                     
                                                  },
 
                                                  render: function() {
