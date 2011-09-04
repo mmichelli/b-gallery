@@ -1,0 +1,78 @@
+<!doctype html>
+<!--[if lt IE 7 ]> <html class="no-js ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]>    <html class="no-js ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]>    <html class="no-js ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <title>Boylston</title>
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+
+  <body>
+
+    <div class="GalleryBoylston" id="MainGallery">
+      <div class="slider">
+
+
+
+      </div>
+
+      <div class="Navigation">
+
+        <a href="#Next" class="next" title="Next slide">Next</a>
+        <a href="#previous" class="previous"  title="Previous slide" >Previous</a>
+
+        <div class="counter">
+          <a href="#previous" class="previousslide">Previous</a>
+          <span class="count"></span>
+          <a href="#Next" class="nextslide">Next</a>
+          <a href="#New" class="newslide">New Slide</a>
+           <a href="#New" class="newicon">New Icon</a>
+        </div>
+      </div>
+    </div>
+
+
+    <script type="text/javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+
+
+
+    <script type="text/javascript" src="js/boylstonGallery.js"></script>
+    <script type="text/javascript" src="js/boylstonGalleryEditor.js"></script>
+
+    <script type="text/javascript" src="js/underscore.js"></script>
+    <script type="text/javascript" src="js/backbone.js"></script>
+    <script type="text/javascript" src="js/backbone-localstorage.js"></script>
+
+
+
+
+
+
+
+
+    <script type="text/template" id="slide-template">
+        <img src="<%= url %>" alt="<%= title %>" />
+        <div class="icons">
+
+        </div>
+
+    </script>
+
+    <script type="text/template" id="icon-template">
+
+        <a class="point" href="#" title="<%= title %>"></a>
+        <div class="bubble">
+          <div class="txt">
+            <h3 class="title"><%= title %></h3>
+            <div class="body"><%= body %></div>
+          </div>
+        </div>
+
+    </script>
+
+
+  </body>
+</html>

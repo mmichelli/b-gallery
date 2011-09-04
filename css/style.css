@@ -4,6 +4,8 @@
   width: 986px;
   margin: 0 auto;
 
+
+
 }
 
 .GalleryBoylston .slider{
@@ -37,7 +39,9 @@
 }
 
 .GalleryBoylston .slider .slide .icon{
-  position: absolute;
+  position: relative;
+  width: 50px;
+
 }
 
 .GalleryBoylston .slider .slide .icon .bubble{
@@ -50,6 +54,8 @@
   position: absolute;
   border: 1px solid #a0a0a0;
   border-width: 0 0 1px 0;
+  z-index: 2000;
+
 
 
 
@@ -67,8 +73,7 @@
 }
 
 
-.GalleryBoylston .slider .slide .icon .bubble p,
-.GalleryBoylston .slider .slide .icon .bubble h3 {
+.GalleryBoylston .slider .slide .icon .bubble .txt {
   padding: 0 20px 10px 15px;
   margin: 0px;
 
@@ -79,14 +84,14 @@
 
 
 
-.GalleryBoylston .slider .slide .icon a{
+.GalleryBoylston .slider .slide .icon a.point{
   display: block;
   background: url("../images/icon_point.png?t=1");
   width: 38px;
   height: 39px;
 }
 
-.GalleryBoylston .slider .slide .icon.active a{
+.GalleryBoylston .slider .slide .icon.active a.point{
   background: url("../images/icon_active.png?t=1");
 }
 
@@ -96,9 +101,9 @@
 
   position: absolute;
   top: 50%;
-  width: 100px;
-  height: 300px;
-  margin-top: -160px;
+  width: 60px;
+  height: 50px;
+  margin-top: -25px;
   text-indent: -9999px;
   font-size: 0;
   background: url("../images/larr_gal.png") no-repeat 0 50%;
