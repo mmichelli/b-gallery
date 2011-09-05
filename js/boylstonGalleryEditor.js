@@ -18,7 +18,7 @@ $(function() {
 
     className: "icon",
 
-    middle: -450,
+    middle: -300,
 
     template: _.template($('#icon-template').html()),
 
