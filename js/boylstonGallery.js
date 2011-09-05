@@ -135,7 +135,8 @@
 
     function updateHash()
     {
-      window.location.hash  = gallery.attr("id") + "_" +  (index + 1);
+      if(gallery.attr("id"))
+        window.location.hash  = gallery.attr("id") + "_" +  (index + 1);
     }
 
     function incIndex(inc)
