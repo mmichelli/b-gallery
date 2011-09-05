@@ -74,11 +74,9 @@
         }
         else
         {
-          setIndex(1);
+          setIndex(0);
         }
       };
-
-
     }
 
 
