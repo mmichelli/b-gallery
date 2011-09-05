@@ -3,9 +3,6 @@
   padding-bottom: 25px;
   width: 986px;
   margin: 0 auto;
-
-
-
 }
 
 .GalleryBoylston .slider{
@@ -30,14 +27,25 @@
   z-index: 100;
 
 }
+#GTitle
+{
+  border: 0px;
+  font-size: 5em;
+  margin: 10px auto;
 
+
+}
 
 .GalleryBoylston .slider .slide.bottom
 {
   z-index: 99;
-
 }
 
+.GalleryBoylston .slider .slide .icons{
+  overflow: visible;
+  height: 0;
+  width: 0;
+}
 .GalleryBoylston .slider .slide .icon{
   position: relative;
   width: 50px;
@@ -79,6 +87,18 @@
 
 }
 
+.GalleryBoylston .slider .slide .icon .bubble .txt {
+  padding: 0 20px 10px 15px;
+  margin: 0px;
+
+}
+
+
+.GalleryBoylston .slider .slide .icon .bubble .txt input[type="text"],
+.GalleryBoylston .slider .slide .icon .bubble .txt textarea{
+  width: 205px
+}
+
 
 
 
@@ -103,12 +123,47 @@
   top: 50%;
   width: 60px;
   height: 50px;
-  margin-top: -25px;
+  margin-top: -30px;
   text-indent: -9999px;
   font-size: 0;
   background: url("../images/larr_gal.png") no-repeat 0 50%;
 
 }
+
+
+
+
+#EditGallery.GalleryBoylston .Navigation .next,
+#EditGallery.GalleryBoylston .Navigation .previous{
+  margin-top: 10px;
+
+
+}
+
+#Toolbar
+{
+  float: left;
+  padding: 5px 0 0 0 ;
+
+
+
+}
+
+#Toolbar a
+{
+  padding: 0 10px 0 0;
+  color: #222;
+  text-decoration: none;
+
+
+}
+
+
+#Toolbar a:hover
+{
+  text-decoration: underline;
+}
+
 .GalleryBoylston .Navigation .next,
 .GalleryBoylston .Navigation .previous,
 .GalleryBoylston .Navigation .counter{
@@ -160,6 +215,14 @@
 
 
 
+#gOut
+{
+  margin: 20px auto;
+  text-align: center;
+  width: 986px;
 
+
+
+}
 
 

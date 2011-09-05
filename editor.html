@@ -7,36 +7,42 @@
     <meta charset="utf-8">
     <title>Boylston</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/uniform.default.css">
   </head>
 
   <body>
 
-    <div class="GalleryBoylston" id="MainGallery">
+    <div class="GalleryBoylston" id="EditGallery">
+      <input type="text" id="GTitle" value="MainGallery" />
+
       <div class="slider">
-
-
 
       </div>
 
       <div class="Navigation">
-
         <a href="#Next" class="next" title="Next slide">Next</a>
         <a href="#previous" class="previous"  title="Previous slide" >Previous</a>
 
+
+        <div id="Toolbar" >
+          <a href="#New" class="newslide">New Slide</a>
+          <a href="#New" class="newicon">New Icon</a>
+
+          <a href="" class="clearAll">Clear all</a>
+        </div>
         <div class="counter">
           <a href="#previous" class="previousslide">Previous</a>
           <span class="count"></span>
           <a href="#Next" class="nextslide">Next</a>
-          <a href="#New" class="newslide">New Slide</a>
-           <a href="#New" class="newicon">New Icon</a>
         </div>
       </div>
     </div>
-
-
+    <form id="gOut" >
+       <textarea rows="150" cols="137" class="gallery"> </textarea>
+    </form>
     <script type="text/javascript" src="js/jquery.js"></script>
-        <script type="text/javascript" src="js/jquery-ui.min.js"></script>
-
+    <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="js/jquery.uniform.min.js"></script>
 
 
     <script type="text/javascript" src="js/boylstonGallery.js"></script>
@@ -47,22 +53,39 @@
     <script type="text/javascript" src="js/backbone-localstorage.js"></script>
 
 
+    <script type="text/template" id="galleryBoylston-template">
+      <div class="GalleryBoylston" id="<%= title %>">
+        <div class="slider">
+          <%= slides %>
+        </div>
+        <div class="Navigation">
+          <a href="#Next" class="next" title="Next slide">Next</a>
+          <a href="#previous" class="previous"  title="Previous slide" >Previous</a>
+          <div class="counter">
+            <a href="#previous" class="previousslide">Previous</a>
+            <span class="count"></span>
+            <a href="#Next" class="nextslide">Next</a>
+          </div>
+        </div>
+      </div>
+    </script>
 
-
-
-
-
+    <script type="text/template" id="epopup-template">
+      <form class="txt">
+        <input type="text" name="title" value="<%= title %>" />
+        <textarea rows="15" cols="25" name="body"><%= body %> </textarea>
+        <input name="save" type="button" value="Save" />
+        <input name="cancel" type="button" value="Cancel" />
+      </form>
+    </script>
 
     <script type="text/template" id="slide-template">
         <img src="<%= url %>" alt="<%= title %>" />
         <div class="icons">
-
         </div>
-
     </script>
 
     <script type="text/template" id="icon-template">
-
         <a class="point" href="#" title="<%= title %>"></a>
         <div class="bubble">
           <div class="txt">
@@ -70,7 +93,6 @@
             <div class="body"><%= body %></div>
           </div>
         </div>
-
     </script>
 
 
