@@ -257,6 +257,7 @@ $(function() {
       var slideView = new SlideView({model:slide}),
       slideEl = slideView.render().el;
       this.$(".slider").append(slideEl);
+      window.gallery.gotToSlide(slideEl);
     },
 
     addAll: function(s) {
