@@ -182,6 +182,10 @@
       var top = $(opts.slides, gallery).filter(".top"),
       bottom = $(opts.slides, gallery).filter(".bottom");
 
+
+      bottom.show();
+      top.show();
+
       $(".slider" , gallery).css("overflow", "hidden");
 
       if(direction == "right" )
