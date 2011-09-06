@@ -18,7 +18,7 @@ $(function() {
 
     className: "icon",
 
-    middle: -320,
+    middle: 360,
 
     template: _.template($('#icon-template').html()),
 
@@ -60,10 +60,10 @@ $(function() {
       var that = this;
       $(this.el).draggable({stop: function(event, ui){
         that.model.set({top:ui.position.top, left:ui.position.left}).save();
-        if(ui.position.top > that.middle)
-          that.model.set({direction: "top"});
-        else
+        if(ui.offset.top < that.middle)
           that.model.set({direction: "bottom"});
+        else
+          that.model.set({direction: "top"});
 
       }});
 
@@ -231,8 +231,6 @@ $(function() {
       this.model.bind('reset',   this.addModel, this);
       this.model.fetch();
       Slides.fetch();
-      window.gallery.jumpToHash();
-
     },
 
     clearAll: function() {
