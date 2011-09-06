@@ -79,8 +79,8 @@ $(function() {
 
       this.reposition();
       var that = this;
-      $(this.el).position();
-      $(this.el).draggable({  opacity: '50%', helper: 'clone', stop: function(event, ui){
+      $(this.el).css("position", "absolute");
+      $(this.el).draggable({  opacity: 0.5,  stop: function(event, ui){
         that.model.set({top:ui.position.top, left:ui.position.left}).save();
         if(ui.offset.top < that.middle)
           that.model.set({direction: "bottom"});
