@@ -26,6 +26,7 @@
 
         <div id="Toolbar" >
           <a href="#New" class="newslide">New Slide</a>
+           <a href="#New" class="deleteslide">Delete Slide</a>
           <a href="#New" class="newicon">New Icon</a>
 
           <a href="" class="clearAll">Clear all</a>
@@ -43,11 +44,8 @@
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/jquery-ui.min.js"></script>
     <script type="text/javascript" src="js/jquery.uniform.min.js"></script>
-
-
     <script type="text/javascript" src="js/boylstonGallery.js"></script>
     <script type="text/javascript" src="js/boylstonGalleryEditor.js"></script>
-
     <script type="text/javascript" src="js/underscore.js"></script>
     <script type="text/javascript" src="js/backbone.js"></script>
     <script type="text/javascript" src="js/backbone-localstorage.js"></script>
@@ -76,6 +74,7 @@
         <textarea rows="15" cols="25" name="body"><%= body %> </textarea>
         <input name="save" type="button" value="Save" />
         <input name="cancel" type="button" value="Cancel" />
+        <input name="delete" type="button" value="Delete" />
       </form>
     </script>
 

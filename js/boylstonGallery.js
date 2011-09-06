@@ -59,6 +59,11 @@
         var top = $(opts.slides, gallery).filter(".top");
         return $(opts.slides, gallery).index(top);
       };
+
+      self.update = function() {
+        update(); 
+      }
+
       self.jumpToHash = function ()
       {
 
@@ -105,17 +110,7 @@
 
     }
 
-    function update()
-    {
-
-      updateCounter();
-      updateHash();
-      updateSlider();
-      slideFX();
-      bubbleFX();
-      hideArrows();
-
-    }
+   
 
     function updateSlider()
     {
@@ -157,20 +152,36 @@
 
     function incIndex(inc)
     {
-      var i = self.getIndex();
-
-      i = (i + inc) % $(opts.slides, gallery).size();
-      i = (-1 == i)?$(opts.slides, gallery).size() - 1:i;
       closeBubbles();
-      setIndex(i);
+      setIndex(self.getIndex() + inc);
 
     }
 
+    function update()
+    {
+      cleanIndex();
+      updateHash();
+      updateCounter();
+      updateSlider();
+      slideFX();
+      bubbleFX();
+      hideArrows();
+    }
+    
+    function cleanIndex() 
+    {
+      index = (index) % $(opts.slides, gallery).size();
+      index = (-1 == index)?$(opts.slides, gallery).size() - 1:index;
+      index = Math.max(0, index);
+    }
+    
 
-
+    
     function setIndex(i) {
+      
       oldIndex = index;
       index = i;
+      cleanIndex();
       closeBubbles();
       update();
     }

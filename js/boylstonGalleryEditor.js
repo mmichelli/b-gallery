@@ -2,22 +2,22 @@ $(function() {
 
   window.Icon = Backbone.Model.extend({
     defaults: function() {
-      return { title: "Title", top: "-500px", left:"100px", body:"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Pellentesque in tellus. In pharetra consequat augue. \n In congue. Curabitur pellentesque iaculis eros. Proin magna odio, posuere sed, commodo nec, varius nec, tortor. Fusce ante. Curabitur tincidunt. Duis posuere eleifend justo. Mauris sit amet ligula. Morbi sit amet sapien mollis neque ultricies placerat.", direction:""};}
+      return { title: "Title", top: "480px", left:"180px", body:"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Pellentesque in tellus. In pharetra consequat augue. \n In congue. Curabitur pellentesque iaculis eros. Proin magna odio, posuere sed, commodo nec, varius nec, tortor. Fusce ante. Curabitur tincidunt. Duis posuere eleifend justo. Mauris sit amet ligula. Morbi sit amet sapien mollis neque ultricies placerat.", direction:""};}
   });
 
 
 
   window.Icons = Backbone.Collection.extend({
-    model: Icon, 
-    
+    model: Icon,
+
     initialize: function() {
       this.bind('change', this.change, this);
- 
+
     },
 
     change: function() {
       window.Slides.trigger('change');
-     
+
     },
 
   });
@@ -37,6 +37,7 @@ $(function() {
     initialize: function() {
       this.model.bind('change', this.render, this);
       this.model.bind('destroy', this.remove, this);
+
     },
 
     editBubble: function(){
@@ -49,12 +50,22 @@ $(function() {
       this.$(".bubble input[name='cancel']").click(function(){
         that.render();
       });
+      this.$(".bubble input[name='delete']").click(function(){
+        that.model.destroy();
+      });
+
+
+
     },
 
     saveBubble: function(){
       var title = this.$(".bubble input[name='title']").val(),
       body = this.$(".bubble textarea[name='body']").val();
       this.model.set({title:title, body:body}).save();
+    },
+
+    remove: function() {
+      $(this.el).remove();
     },
 
     render: function() {
@@ -68,7 +79,8 @@ $(function() {
 
       this.reposition();
       var that = this;
-      $(this.el).draggable({stop: function(event, ui){
+      $(this.el).position();
+      $(this.el).draggable({  opacity: '50%', helper: 'clone', stop: function(event, ui){
         that.model.set({top:ui.position.top, left:ui.position.left}).save();
         if(ui.offset.top < that.middle)
           that.model.set({direction: "bottom"});
@@ -137,6 +149,7 @@ $(function() {
       this.model.bind('change', this.render, this);
       this.model.bind('destroy', this.remove, this);
       this.model.get("icons").bind('reset', this.addAll, this);
+      this.model.get("icons").bind('destroy', this.removeIcon, this);
       this.model.get("icons").bind("add",this.appendIcon, this );
 
       this.iconsViews= [],
@@ -164,6 +177,15 @@ $(function() {
 
     },
 
+    removeIcon: function(ic) {
+      this.iconsViews = _.select(this.iconsViews, function(icon) {
+        return ic.cid != icon.model.cid;
+      });
+    },
+
+
+
+
     updateImageSRC: function(){
 
       var newURL = prompt("Please enter the src of the image:", this.model.get("url"));
@@ -171,7 +193,6 @@ $(function() {
         this.model.set({url:newURL});
         this.model.save();
       }
-
     },
 
     renderIcons: function(el) {
@@ -185,6 +206,9 @@ $(function() {
       window.gallery.addClickEvents();
     },
 
+    remove: function() {
+      $(this.el).remove();
+    },
 
     render: function() {
       $(this.el).html(this.template(this.model.toJSON()));
@@ -227,7 +251,8 @@ $(function() {
       "click .newslide": "newSlide",
       "click .newicon": "newIcon",
       "blur #GTitle": "updateTitle",
-      "click .clearAll": "clearAll"
+      "click .clearAll": "clearAll",
+      "click .deleteslide": "deleteSlide"
     },
 
     initialize: function() {
@@ -253,6 +278,10 @@ $(function() {
 
     newSlide: function() {
       Slides.create({});
+    },
+
+    deleteSlide: function() {
+      Slides.at(window.gallery.getIndex()).destroy();
     },
 
     updateTitle: function() {
@@ -292,17 +321,16 @@ $(function() {
 
 
     render: function() {
+      window.gallery.update();
       var slider = this.$(".slider").clone(),
       id = this.gallery.get("title").replace(/ /g, "_")
       $(".point",slider).removeClass("c");
       $("#GTitle").val(this.gallery.get("title"));
       $("#gOut .gallery").val(this.outputTemplate({title:id,slides: slider.html()}));
       return this;
-    },
-
-    remove: function() {
-      $(this.el).remove();
     }
+
+
 
   });
   window.Slides = new SlideList();
