@@ -8,7 +8,17 @@ $(function() {
 
 
   window.Icons = Backbone.Collection.extend({
-    model: Icon
+    model: Icon, 
+    
+    initialize: function() {
+      this.bind('change', this.change, this);
+ 
+    },
+
+    change: function() {
+      window.Slides.trigger('change');
+     
+    },
 
   });
 
@@ -172,9 +182,7 @@ $(function() {
       {
         $(".icons", el).append(this.iconsViews[i].render().el);
       };
-
       window.gallery.addClickEvents();
-
     },
 
 
@@ -254,6 +262,7 @@ $(function() {
     addSlide: function(slide) {
       var slideView = new SlideView({model:slide}),
       slideEl = slideView.render().el;
+
       this.$(".slider").append(slideEl);
       window.gallery.gotToSlide(slideEl);
     },
