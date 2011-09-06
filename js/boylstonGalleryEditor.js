@@ -11,13 +11,11 @@ $(function() {
     model: Icon,
 
     initialize: function() {
-      this.bind('change', this.change, this);
-
+      this.bind('all', this.change, this);
     },
 
     change: function() {
       window.Slides.trigger('change');
-
     },
 
   });
@@ -259,8 +257,6 @@ $(function() {
       Slides.bind('add',   this.addSlide, this);
       Slides.bind('reset', this.addAll, this);
       Slides.bind('all',   this.render, this);
-
-
       this.model.bind('reset',   this.addModel, this);
       this.model.fetch();
       Slides.fetch();
