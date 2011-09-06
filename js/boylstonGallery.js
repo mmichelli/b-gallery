@@ -113,6 +113,7 @@
       updateSlider();
       slideFX();
       bubbleFX();
+      hideArrows();
 
     }
 
@@ -131,7 +132,22 @@
 
     }
 
+    function hideArrows()
+    {
+      if($(opts.slides, gallery).size() < 2) {
+        next.hide(); 
+        previous.hide();
+        $(".count", gallery).hide(); 
+      }
+      else
+      {
+        next.show(); 
+        previous.show();
+        $(".count", gallery).show(); 
+      }
 
+
+    }
 
     function updateHash()
     {
