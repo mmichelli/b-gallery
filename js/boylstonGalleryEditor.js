@@ -1,5 +1,8 @@
 $(function() {
 
+
+
+
   window.Icon = Backbone.Model.extend({
     defaults: function() {
       return { title: "Title", top: "480px", left:"180px", body:"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Pellentesque in tellus. In pharetra consequat augue. \n In congue. Curabitur pellentesque iaculis eros. Proin magna odio, posuere sed, commodo nec, varius nec, tortor. Fusce ante. Curabitur tincidunt. Duis posuere eleifend justo. Mauris sit amet ligula. Morbi sit amet sapien mollis neque ultricies placerat.", direction:""};}
@@ -51,9 +54,6 @@ $(function() {
       this.$(".bubble input[name='delete']").click(function(){
         that.model.destroy();
       });
-
-
-
     },
 
     saveBubble: function(){
@@ -105,7 +105,91 @@ $(function() {
 
   });
 
+  window.SlideImage = Backbone.Model.extend({
+    defaults: function() {
+      return { name: "", url: "images/2.png" };}
+  });
 
+  window.SlideImages = Backbone.Collection.extend({
+    model: SlideImage,
+    localStorage: new Store("images"),
+
+
+  });
+
+
+ window.ImageThumb = Backbone.View.extend({
+    tagName: "img",
+    events: {
+      "click": "updateImageSRC",
+       "dblclick": "destroy"
+    },
+
+    updateImageSRC: function(){
+      Slides.setCurrentSlide({url:this.model.get("url")});
+
+    },
+
+   destroy: function() {
+     this.model.destroy();
+   },
+
+    initialize: function() {
+      this.model.bind('change', this.render, this);
+      this.model.bind('destroy', this.remove, this);
+    },
+
+    remove: function() {
+      $(this.el).remove();
+    },
+
+    render: function() {
+      $(this.el).attr("src", this.model.get("url"));
+      return this;
+    }
+
+  });
+
+
+  window.SlideImagesView = Backbone.View.extend({
+    el: $("#dropbox"),
+    path:"data/",
+
+
+    addImages: function(file) {
+      this.images.create({name:file.fileName, url:this.path+file.fileName});
+    },
+
+    initialize: function() {
+      this.images = new SlideImages();
+      this.images.bind('reset', this.addAll, this);
+      this.images.bind('add', this.addImage, this);
+      this.addDrop();
+      this.images.fetch();
+    },
+
+    addImage: function(image) {
+      var thumb = new ImageThumb({model:image});
+      $(this.el).append(thumb.render().el);
+    },
+
+    addAll: function(img) {
+      var self = this;
+      this.images.each(function(img) {
+        self.addImage(img);
+      });
+    },
+
+    addDrop: function() {
+      var self = this;
+      new uploader('dropbox', 'uploader.php', null, function(percentage, file) {
+        if(percentage == 100)
+          self.addImages(file);
+      });
+    }
+
+
+  });
 
   window.Slide = Backbone.Model.extend({
     initialize: function() {
@@ -129,7 +213,12 @@ $(function() {
 
   window.SlideList = Backbone.Collection.extend({
     model: Slide,
-    localStorage: new Store("slides")
+    localStorage: new Store("slides"),
+    setCurrentSlide: function(obj) {
+      var slide = this.at(window.gallery.getIndex());
+      slide.set(obj);
+      slide.save();
+    }
   });
 
 
@@ -242,6 +331,7 @@ $(function() {
     el: $(".GalleryBoylston"),
 
     gallery: new Gallery(),
+    images: new SlideImagesView(),
 
     outputTemplate: _.template($('#galleryBoylston-template').html()),
 
@@ -329,12 +419,22 @@ $(function() {
 
 
   });
+
   window.Slides = new SlideList();
   window.gallery = $(".GalleryBoylston").BoylstonGallery();
   var g = new Galleries();
   new GalleryEditor({model:g});
 
+
+
+
+
+
+
+
+
 });
+
 
 
 

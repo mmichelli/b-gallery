@@ -219,16 +219,33 @@
 
 
 
+#dropbox
+{
+
+  width: 986px;
+  margin: 20px auto 20px;
+  background-color: #ddd;
 
 
+}
+
+
+#dropbox img
+{
+  padding: 10px;
+  max-width: 100px;
+  max-height: 100px;
+  cursor: pointer;
+}
+#dropbox h3
+{
+  padding: 10px 0 0 10px;
+}
 #gOut
 {
   margin: 20px auto;
   text-align: center;
   width: 986px;
-
-
-
 }
 
 
