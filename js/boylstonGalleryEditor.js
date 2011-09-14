@@ -1,7 +1,7 @@
 $(function() {
 
 
-
+//---------------- Icons
 
   window.Icon = Backbone.Model.extend({
     defaults: function() {
@@ -105,6 +105,9 @@ $(function() {
 
   });
 
+
+//---------------- Background Images
+
   window.SlideImage = Backbone.Model.extend({
     defaults: function() {
       return { name: "", url: "images/2.png" };}
@@ -155,7 +158,6 @@ $(function() {
     el: $("#dropbox"),
     path:"data/",
 
-
     addImages: function(file) {
       this.images.create({name:file.fileName, url:this.path+file.fileName});
     },
@@ -190,6 +192,8 @@ $(function() {
 
 
   });
+
+//---------------- Slides
 
   window.Slide = Backbone.Model.extend({
     initialize: function() {
@@ -311,7 +315,7 @@ $(function() {
 
   });
 
-
+//---------------- Main Gallery
 
  window.Gallery = Backbone.Model.extend({
     defaults: function() {
@@ -424,14 +428,6 @@ $(function() {
   window.gallery = $(".GalleryBoylston").BoylstonGallery();
   var g = new Galleries();
   new GalleryEditor({model:g});
-
-
-
-
-
-
-
-
 
 });
 
