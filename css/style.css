@@ -223,6 +223,7 @@
 {
 
   width: 986px;
+  min-height: 150px;
   margin: 20px auto 20px;
   background-color: #ddd;
 
