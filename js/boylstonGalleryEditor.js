@@ -296,7 +296,10 @@ $(function() {
     },
 
     remove: function() {
+
       $(this.el).remove();
+
+      window.gallery.update();
     },
 
     render: function() {
@@ -370,6 +373,8 @@ $(function() {
     newSlide: function() {
       Slides.create({});
     },
+
+
 
     deleteSlide: function() {
       Slides.at(window.gallery.getIndex()).destroy();

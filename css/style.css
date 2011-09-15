@@ -5,9 +5,7 @@
   margin: 0 auto;
 }
 
-.GalleryBoylston.small{
-  width: 484px;
-}
+
 
 .GalleryBoylston .slider{
   position: relative;
@@ -16,16 +14,7 @@
   height: 530px;
 }
 
-.GalleryBoylston.small .slider{
-  width: 484px;
-  height: 460px;
-}
-.GalleryBoylston.small .slider img[src*="1.png"],
-.GalleryBoylston.small .slider img[src*="2.png"],
-.GalleryBoylston.small .slider img[src*="1.png"]{
-  width: 484px;
-  height: 460px;
-}
+
 
 .GalleryBoylston .slider .slide{
   position: absolute;
@@ -269,3 +258,27 @@
 }
 
 
+
+.GalleryBoylston.small .slider{
+  width: 484px;
+  height: 460px;
+}
+.GalleryBoylston.small{
+  width: 484px;
+}
+
+.GalleryBoylston.small .slider img[src*="1.png"],
+.GalleryBoylston.small .slider img[src*="2.png"],
+.GalleryBoylston.small .slider img[src*="1.png"]
+{
+  width: 484px;
+  height: 460px;
+}
+
+#dropbox.small,
+#gOut.small textarea
+{
+
+  width: 482px
+
+}
