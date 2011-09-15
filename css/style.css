@@ -5,11 +5,26 @@
   margin: 0 auto;
 }
 
+.GalleryBoylston.small{
+  width: 484px;
+}
+
 .GalleryBoylston .slider{
   position: relative;
   overflow: visible;
   width: 986px;
   height: 530px;
+}
+
+.GalleryBoylston.small .slider{
+  width: 484px;
+  height: 460px;
+}
+.GalleryBoylston.small .slider img[src*="1.png"],
+.GalleryBoylston.small .slider img[src*="2.png"],
+.GalleryBoylston.small .slider img[src*="1.png"]{
+  width: 484px;
+  height: 460px;
 }
 
 .GalleryBoylston .slider .slide{
@@ -30,10 +45,14 @@
 #GTitle
 {
   border: 0px;
-  font-size: 5em;
+  font-size: 4em;
   margin: 10px auto;
 
 
+}
+.small #GTitle
+{
+  font-size: 3em;
 }
 
 .GalleryBoylston .slider .slide.bottom
