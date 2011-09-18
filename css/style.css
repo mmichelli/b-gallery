@@ -226,7 +226,7 @@
 }
 
 
-
+#SlideDetails,
 #dropbox
 {
 
@@ -234,6 +234,8 @@
   min-height: 150px;
   margin: 20px auto 20px;
   background-color: #ddd;
+  overflow: hidden;
+
 
 
 }
@@ -246,6 +248,8 @@
   max-height: 100px;
   cursor: pointer;
 }
+
+#SlideDetails h3,
 #dropbox h3
 {
   padding: 10px 0 0 10px;
@@ -255,6 +259,61 @@
   margin: 20px auto;
   text-align: center;
   width: 986px;
+}
+#gOut .syntaxhighlighter
+{
+  text-align: left;
+}
+
+
+#SlideDetails img
+{
+  max-height: 100px;
+  clear: both;
+  float: left;
+  margin: 10px 0 0 80px;
+
+}
+
+#SlideDetails label,
+#SlideDetails input
+{
+  float: left;
+
+}
+
+#SlideDetails textarea
+{
+  float: left;
+  clear: both;
+  margin: 10px 0 0;
+
+
+
+}
+
+#SlideDetails input
+{
+  margin: 0 0 10px 20px;
+  width: 300px;
+}
+#SlideDetails label
+{
+  clear: both;
+  width: 60px;
+
+
+
+}
+
+
+
+#SlideDetails .row
+{
+ float: left;
+ padding: 0 20px 20px;
+  overflow: hidden;
+
 }
 
 
@@ -275,8 +334,9 @@
   height: 460px;
 }
 
+
 #dropbox.small,
-#gOut.small textarea
+#gOut.small
 {
 
   width: 482px

@@ -8,36 +8,32 @@
     <title>Boylston</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/uniform.default.css">
-  </head>
-
-  <body>
-
-    <div class="GalleryBoylston" id="EditGallery">
-      <input type="text" id="GTitle" value="" />
-
-      <div class="slider">
-
-      </div>
-
-      <div class="Navigation">
-        <a href="#Next" class="next" title="Next slide">Next</a>
-        <a href="#previous" class="previous"  title="Previous slide" >Previous</a>
-
-
-        <div id="Toolbar" >
-          <a href="#New" class="newslide">New Slide</a>
-           <a href="#New" class="deleteslide">Delete Slide</a>
-          <a href="#New" class="newicon">New Icon</a>
-
-          <a href="" class="clearAll">Clear all</a>
+b
+    <div id="SlideDetails">
+      <h3>Current slide: </h3>
+      <form>
+        <div class="row">
+          <label class="url" for="url" >Link:</label>
+          <input class="url" type="text" name="url" value="" />
+          <label class="background" for="background" >URL:</label>
+          <input class="img" type="text" name="background" value="" />
+          <img src="images/1.png" alt="Slide Image" />
         </div>
-        <div class="counter">
-          <a href="#previous" class="previousslide">Previous</a>
-          <span class="count"></span>
-          <a href="#Next" class="nextslide">Next</a>
+        <div class="row">
+          <label class="description" for="description" >Text:</label>
+          <textarea class="description" rows="10" cols="70" name="description"> </textarea>
         </div>
-      </div>
+
+
+
+
+
+
+
+      </form>
+
     </div>
+
     <div id="dropbox">
       <h3>Upload box: </h3>
     </div>
@@ -46,7 +42,6 @@
     <form id="gOut" >
        <textarea rows="150" cols="137" class="gallery"> </textarea>
     </form>
-
 
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/jquery-ui.min.js"></script>
@@ -57,6 +52,8 @@
     <script type="text/javascript" src="js/backbone.js"></script>
     <script type="text/javascript" src="js/backbone-localstorage.js"></script>
     <script type="text/javascript" src="js/html5uploader.js"></script>
+
+
 
     <script type="text/javascript">
       $(function(){

@@ -180,7 +180,11 @@ $(function() {
       var self = this;
       new uploader('dropbox', 'uploader.php', null, function(percentage, file) {
         if(percentage == 100)
-          self.addImages(file);
+          _.delay(function() {
+              self.addImages(file);
+          }, 500)
+
+
       });
     }
 
