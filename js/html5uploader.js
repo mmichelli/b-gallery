@@ -75,7 +75,7 @@ function uploader(place, targetPHP, show, status) {
         document.getElementById(show).appendChild(img);
       }
 
-    reader = new FileReader();
+    var reader = new FileReader();
     // Firefox 3.6, WebKit
     if(reader.addEventListener) {
       reader.addEventListener('loadend', this.loadEnd, false);
@@ -137,7 +137,7 @@ function uploader(place, targetPHP, show, status) {
     var dt = event.dataTransfer;
     var files = dt.files;
     for (var i = 0; i<files.length; i++) {
-      var file = files[0];
+      var file = files[i];
       upload(file);
     }
   }

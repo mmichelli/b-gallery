@@ -179,8 +179,16 @@ $(function() {
     addDrop: function() {
       var self = this;
       new uploader('dropbox', 'uploader.php', null, function(percentage, file) {
-        if(percentage == 100)
-          self.addImages(file);
+
+        if(percentage == 100) {
+         
+          _.delay(function() {
+            self.addImages(file); 
+          }, 1000); 
+            
+        }
+        
+
       });
     }
 
