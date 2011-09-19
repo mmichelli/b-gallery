@@ -21,8 +21,36 @@
   top: 0px;
   left: 0px;
   display: none;
+}
+
+.GalleryBoylston .slider .slide .caption{
+  display: none;
+}
+
+
+.GalleryBoylston #Caption{
+  float: left;
 
 }
+
+
+.GalleryBoylston #Caption form{
+  padding: 10px  0
+
+}
+
+.GalleryBoylston #Caption form  input[type="text"]{
+  width: 500px;
+
+
+}
+
+
+.GalleryBoylston #Caption p{
+  margin: 5px 0 10px 2px
+
+}
+
 
 .GalleryBoylston .slider .slide.top,
 .GalleryBoylston .slider .slide.bottom
@@ -156,11 +184,7 @@
 
 #Toolbar
 {
-  float: left;
   padding: 5px 0 0 0 ;
-
-
-
 }
 
 #Toolbar a
@@ -168,8 +192,6 @@
   padding: 0 10px 0 0;
   color: #222;
   text-decoration: none;
-
-
 }
 
 
@@ -235,9 +257,7 @@
   margin: 20px auto 20px;
   background-color: #ddd;
   overflow: hidden;
-
-
-
+  clear:both;
 }
 
 

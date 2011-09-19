@@ -137,7 +137,7 @@ function uploader(place, targetPHP, show, status) {
     var dt = event.dataTransfer;
     var files = dt.files;
     for (var i = 0; i<files.length; i++) {
-      var file = files[i];
+      var file = files[0];
       upload(file);
     }
   }

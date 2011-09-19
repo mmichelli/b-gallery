@@ -180,11 +180,7 @@ $(function() {
       var self = this;
       new uploader('dropbox', 'uploader.php', null, function(percentage, file) {
         if(percentage == 100)
-          _.delay(function() {
-              self.addImages(file);
-          }, 500)
-
-
+          self.addImages(file);
       });
     }
 
@@ -194,15 +190,14 @@ $(function() {
 //---------------- Slides
 
   window.Slide = Backbone.Model.extend({
-    initialize: function() {
 
+    initialize: function() {
       this.set({"icons": new Icons(this.get("icons"))});
       this.get("icons").localStorage = new Store(this.id);
-
-
     },
+
     defaults: function() {
-      return { url:"images/1.png", title: "Title", icons: new Icons() , state: "" };
+      return { url:"images/1.png", title: "Title", icons: new Icons() , LinkURL: "./", txt:"Lorem ipsum dolor sit amet, consectetuer adipiscing elit." };
     }
     ,
     newIcon: function()
@@ -346,6 +341,7 @@ $(function() {
     images:  new SlideImagesView(),
 
     outputTemplate: _.template($('#galleryBoylston-template').html()),
+    ecaptionTemplate:  _.template($('#ecaption-template').html()),
 
     events: {
       "click .newslide": "newSlide",
@@ -362,15 +358,43 @@ $(function() {
       this.model.bind('reset',   this.addModel, this);
       this.model.fetch();
       Slides.fetch();
+      this.captionEvent();
     },
 
+
+    captionEvent: function() {
+      var that = this;
+      this.$("#Caption").addClass("editing").dblclick(function(){
+        that.editCaption();
+      });
+    },
+    editCaption: function() {
+      var that = this;
+      that.$("#Caption").html(this.ecaptionTemplate( this.currentSlide().toJSON()));
+
+      that.$("#Caption input[name='save']").click(function(){
+
+        that.currentSlide().set(
+          {
+            LinkURL:$("#Caption input[name='LinkURL']").val(),
+            txt:$("#Caption input[name='txt']").val()
+          }).save();
+        $(".slide.top a").attr("href", $("#Caption input[name='LinkURL']").val());
+        $(".slide.top p.caption").html($("#Caption input[name='txt']").val());
+        window.gallery.update();
+      });
+      this.$("#Caption input[name='cancel']").click(function(){
+        window.gallery.update();
+      });
+
+    },
     clearAll: function() {
       if(localStorage)
         localStorage.clear();
     },
 
     newIcon: function(){
-      Slides.at(window.gallery.getIndex()).newIcon();
+      this.currentSlide().newIcon();
       window.gallery.addClickEvents();
     },
 
@@ -378,10 +402,13 @@ $(function() {
       Slides.create({});
     },
 
+    currentSlide: function() {
+      return Slides.at(window.gallery.getIndex());
+    },
 
 
     deleteSlide: function() {
-      Slides.at(window.gallery.getIndex()).destroy();
+      this.currentSlide().destroy();
     },
 
     updateTitle: function() {

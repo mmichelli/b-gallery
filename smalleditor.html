@@ -8,45 +8,40 @@
     <title>Boylston</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/uniform.default.css">
-  </head>
-
-  <body>
-
     <div class="GalleryBoylston small" id="EditGallery">
       <input type="text" id="GTitle" value="" />
-
-      <div class="slider">
-
-      </div>
-
-      <div class="Navigation">
-        <a href="#Next" class="next" title="Next slide">Next</a>
-        <a href="#previous" class="previous"  title="Previous slide" >Previous</a>
-
-
         <div id="Toolbar" >
           <a href="#New" class="newslide">New Slide</a>
-           <a href="#New" class="deleteslide">Delete Slide</a>
+          <a href="#New" class="deleteslide">Delete Slide</a>
           <a href="#New" class="newicon">New Icon</a>
-
           <a href="" class="clearAll">Clear all</a>
         </div>
-        <div class="counter">
-          <a href="#previous" class="previousslide">Previous</a>
+
+        <div class="slider">
+
+        </div>
+        <div id="Caption">
+          <p class="caption">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+        </div>
+        <div class="Navigation">
+          <a href="#Next" class="next" title="Next slide">Next</a>
+          <a href="#previous" class="previous"  title="Previous slide" >Previous</a>
+          <div class="counter">
+            <a href="#previous" class="previousslide">Previous</a>
           <span class="count"></span>
           <a href="#Next" class="nextslide">Next</a>
         </div>
       </div>
     </div>
-    <div class="small" id="dropbox">
+
+    <div id="dropbox" class="small">
       <h3>Upload box: </h3>
     </div>
 
 
-    <form class="small"  id="gOut" >
+    <form id="gOut" class="small">
        <textarea rows="150" cols="137" class="gallery"> </textarea>
     </form>
-
 
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/jquery-ui.min.js"></script>
@@ -58,11 +53,13 @@
     <script type="text/javascript" src="js/backbone-localstorage.js"></script>
     <script type="text/javascript" src="js/html5uploader.js"></script>
 
+
+
     <script type="text/javascript">
       $(function(){
-        window.Slides = new SlideList({ID :"Slides"});
+        window.Slides = new SlideList({ID :"SmallSlides"});
         window.gallery = $(".GalleryBoylston").BoylstonGallery();
-        var g = new Galleries({ID :"SmallGallery"});
+        var g = new Galleries({ID: "Gallery"});
         new GalleryEditor({model:g});
 
       });
@@ -71,9 +68,11 @@
     </script>
 
     <script type="text/template" id="galleryBoylston-template">
-      <div class="GalleryBoylston small" id="<%= title %>">
+      <div class="GalleryBoylston" id="<%= title %>">
         <div class="slider">
           <%= slides %>
+        </div>
+        <div id="Caption">
         </div>
         <div class="Navigation">
           <a href="#Next" class="next" title="Next slide">Next</a>
@@ -97,10 +96,32 @@
       </form>
     </script>
 
-    <script type="text/template" id="slide-template">
-        <img src="<%= url %>" alt="<%= title %>" />
-        <div class="icons">
+    <script type="text/template" id="ecaption-template">
+      <form class="txt">
+        <div class="row">
+          <input type="text" name="LinkURL" value="<%= LinkURL %>" />
         </div>
+        <div class="row">
+          <input type="text" name="txt" value="<%= txt %>" />
+        </div>
+
+
+        <input name="save" type="button" value="Save" />
+        <input name="cancel" type="button" value="Cancel" />
+
+      </form>
+    </script>
+
+
+    <script type="text/template" id="slide-template">
+      <a href="<%= LinkURL %>">
+        <img src="<%= url %>" alt="<%= title %>" />
+      </a>
+      <div class="icons"></div>
+      <p class="caption"><%= txt %></p>
+
+
+
     </script>
 
     <script type="text/template" id="icon-template">

@@ -61,7 +61,7 @@
       };
 
       self.update = function() {
-        update(); 
+        update();
       }
 
       self.jumpToHash = function ()
@@ -110,13 +110,15 @@
 
     }
 
-   
+
 
     function updateSlider()
     {
       $(opts.slides, gallery).filter(".bottom").removeClass("bottom");
       $(opts.slides, gallery).filter(".top").removeClass("top").addClass("bottom");
       $($(opts.slides, gallery).get(index)).addClass("top").removeClass("bottom");
+      $("#Caption",gallery).html("");
+      $("#Caption",gallery).append($(".slide.top p.caption").clone());
     }
 
     function updateCounter()
@@ -130,15 +132,15 @@
     function hideArrows()
     {
       if($(opts.slides, gallery).size() < 2) {
-        next.hide(); 
+        next.hide();
         previous.hide();
-        $(".count", gallery).hide(); 
+        $(".count", gallery).hide();
       }
       else
       {
-        next.show(); 
+        next.show();
         previous.show();
-        $(".count", gallery).show(); 
+        $(".count", gallery).show();
       }
 
 
@@ -164,21 +166,22 @@
       updateCounter();
       updateSlider();
       slideFX();
+      captionFX();
       bubbleFX();
       hideArrows();
     }
-    
-    function cleanIndex() 
+
+    function cleanIndex()
     {
       index = (index) % $(opts.slides, gallery).size();
       index = (-1 == index)?$(opts.slides, gallery).size() - 1:index;
       index = Math.max(0, index);
     }
-    
 
-    
+
+
     function setIndex(i) {
-      
+
       oldIndex = index;
       index = i;
       cleanIndex();
@@ -196,6 +199,12 @@
     {
       $(".icon" , gallery).filter(".active").children(".bubble:hidden").fadeIn(500);
       $(".icon" , gallery).not(".active").children(".bubble:visible").fadeOut(500);
+    }
+
+    function captionFX()
+    {
+        $("#Caption",gallery).hide();
+      $("#Caption",gallery).clearQueue().fadeOut(500).delay(500).fadeIn(500);
     }
 
     function slideFade()
