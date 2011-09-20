@@ -31,22 +31,65 @@
 .GalleryBoylston #Caption{
   float: left;
 
+
+}
+#EditGallery.GalleryBoylston #Caption {
+ clear: both;
 }
 
+#EditGallery.GalleryBoylston #Caption p{
+  background-color: #eee;
+  min-height: 20px;
+  min-width: 100px;
+  padding: 5px;
 
-.GalleryBoylston #Caption form{
+
+}
+
+.GalleryBoylston #SlideLink
+{
+  display: none;
+
+}
+
+#SlideInfo {
+  overflow: hidden;
+  float: left;
+  min-height: 100px;
+}
+
+#EditGallery.GalleryBoylston #SlideLink
+{
+  display: block;
+  background-color: #eee;
+  min-height: 20px;
+  float: left;
+  min-width: 100px;
+  padding: 5px;
+  margin: 5px 0 10px 2px;
+
+}
+
+.GalleryBoylston #SlideInfo form{
   padding: 10px  0
 
 }
 
-.GalleryBoylston #Caption form  input[type="text"]{
-  width: 500px;
-
-
+.GalleryBoylston #SlideInfo form  input[type="text"],
+.GalleryBoylston #SlideInfo form  textarea[type="text"]
+{
+  width: 400px;
+  margin: 5px 0 10px 2px;
 }
 
 
-.GalleryBoylston #Caption p{
+.GalleryBoylston.small #SlideInfo form  input[type="text"],
+.GalleryBoylston.small #SlideInfo form  textarea[type="text"]
+{
+  width: 300px;
+}
+
+.GalleryBoylston #SlideInfo p{
   margin: 5px 0 10px 2px
 
 }

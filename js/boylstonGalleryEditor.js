@@ -181,13 +181,13 @@ $(function() {
       new uploader('dropbox', 'uploader.php', null, function(percentage, file) {
 
         if(percentage == 100) {
-         
+
           _.delay(function() {
-            self.addImages(file); 
-          }, 1000); 
-            
+            self.addImages(file);
+          }, 1000);
+
         }
-        
+
 
       });
     }
@@ -372,30 +372,38 @@ $(function() {
 
     captionEvent: function() {
       var that = this;
-      this.$("#Caption").addClass("editing").dblclick(function(){
+      this.$("#Caption, #SlideLink").click(function(){
         that.editCaption();
+        return false;
       });
     },
     editCaption: function() {
       var that = this;
-      that.$("#Caption").html(this.ecaptionTemplate( this.currentSlide().toJSON()));
+      that.$("#SlideInfo").html(this.ecaptionTemplate( this.currentSlide().toJSON()));
 
-      that.$("#Caption input[name='save']").click(function(){
+      that.$("#SlideInfo input[name='save']").click(function(){
 
         that.currentSlide().set(
           {
-            LinkURL:$("#Caption input[name='LinkURL']").val(),
-            txt:$("#Caption input[name='txt']").val()
+            LinkURL:$("#SlideInfo input[name='LinkURL']").val(),
+            txt:$("#SlideInfo textarea[name='txt']").val()
           }).save();
-        $(".slide.top a").attr("href", $("#Caption input[name='LinkURL']").val());
-        $(".slide.top p.caption").html($("#Caption input[name='txt']").val());
-        window.gallery.update();
+        that.updateSlideInfo();
       });
-      this.$("#Caption input[name='cancel']").click(function(){
-        window.gallery.update();
+      this.$("#SlideInfo input[name='cancel']").click(function(){
+        that.updateSlideInfo();
       });
 
     },
+
+    updateSlideInfo: function() {
+      this.$("#SlideInfo").html($("#slideInfo-template").html());
+      window.gallery.update();
+      this.captionEvent();
+      this.render();
+
+    },
+
     clearAll: function() {
       if(localStorage)
         localStorage.clear();

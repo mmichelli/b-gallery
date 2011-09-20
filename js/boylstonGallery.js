@@ -119,6 +119,10 @@
       $($(opts.slides, gallery).get(index)).addClass("top").removeClass("bottom");
       $("#Caption",gallery).html("");
       $("#Caption",gallery).append($(".slide.top p.caption").clone());
+      $("#SlideLink a",gallery).attr("href",$(".slide.top a:first").attr("href"));
+
+      $("#SlideLink a",gallery).html($(".slide.top a:first").attr("href"));
+
     }
 
     function updateCounter()

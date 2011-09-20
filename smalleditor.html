@@ -20,9 +20,18 @@
         <div class="slider">
 
         </div>
-        <div id="Caption">
-          <p class="caption">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+
+        <div id="SlideInfo">
+          <div id="SlideLink">
+            <a href=""></a>
+          </div>
+          <div id="Caption">
+            <p class="caption">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+          </div>
         </div>
+
+
+
         <div class="Navigation">
           <a href="#Next" class="next" title="Next slide">Next</a>
           <a href="#previous" class="previous"  title="Previous slide" >Previous</a>
@@ -39,8 +48,8 @@
     </div>
 
 
-    <form id="gOut" class="small">
-       <textarea rows="150" cols="137" class="gallery"> </textarea>
+    <form id="gOut"  class="small">
+       <textarea rows="150" cols="66" class="gallery"> </textarea>
     </form>
 
     <script type="text/javascript" src="js/jquery.js"></script>
@@ -72,17 +81,31 @@
         <div class="slider">
           <%= slides %>
         </div>
+        <div id="SlideLink">
+          <a href=""></a>
+        </div>
         <div id="Caption">
         </div>
+
         <div class="Navigation">
           <a href="#Next" class="next" title="Next slide">Next</a>
           <a href="#previous" class="previous"  title="Previous slide" >Previous</a>
           <div class="counter">
             <a href="#previous" class="previousslide">Previous</a>
             <span class="count"></span>
+
             <a href="#Next" class="nextslide">Next</a>
           </div>
         </div>
+      </div>
+    </script>
+
+    <script type="text/template" id="slideInfo-template">
+      <div id="SlideLink">
+        <a href=""></a>
+      </div>
+      <div id="Caption">
+        <p class="caption"></p>
       </div>
     </script>
 
@@ -102,7 +125,7 @@
           <input type="text" name="LinkURL" value="<%= LinkURL %>" />
         </div>
         <div class="row">
-          <input type="text" name="txt" value="<%= txt %>" />
+          <textarea type="text" name="txt"><%= txt %></textarea>
         </div>
 
 
