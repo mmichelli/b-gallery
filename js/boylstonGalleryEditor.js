@@ -14,6 +14,7 @@ $(function() {
     model: Icon,
 
     initialize: function() {
+
       this.bind('all', this.change, this);
     },
 
@@ -109,9 +110,7 @@ $(function() {
 
   window.SlideImages = Backbone.Collection.extend({
     model: SlideImage,
-    localStorage: new Store("images"),
-
-
+    localStorage: new Store("images")
   });
 
 
@@ -199,9 +198,10 @@ $(function() {
 
   window.Slide = Backbone.Model.extend({
 
+    hasStoredIcons: false,
     initialize: function() {
       this.set({"icons": new Icons(this.get("icons"))});
-      this.get("icons").localStorage = new Store(this.id);
+
     },
 
     defaults: function() {
@@ -211,7 +211,19 @@ $(function() {
     newIcon: function()
     {
       this.get("icons").create({});
+    },
+
+    storeIcons: function() {
+      if(!this.isNew() && !this.hasStoredIcons)
+      {
+        this.hasStoredIcons = true;
+        this.get("icons").localStorage = new Store(this.id);
+      }
+
+
     }
+
+
 
   });
 
@@ -251,6 +263,7 @@ $(function() {
       this.iconsViews= [],
       Slides.bind('all',   this.render, this);
       $(this.el).addClass("slide");
+      this.model.storeIcons();
       this.model.get("icons").fetch();
     },
 
