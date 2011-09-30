@@ -1,0 +1,162 @@
+<!doctype html>
+<!--[if lt IE 7 ]> <html class="no-js ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]>    <html class="no-js ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]>    <html class="no-js ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <title>Boylston</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/uniform.default.css">
+    <div class="GalleryBoylston lookbook" id="EditGallery">
+      <input type="text" id="GTitle" value="" />
+        <div id="Toolbar" >
+          <a href="#New" class="newslide">New Slide</a>
+          <a href="#New" class="deleteslide">Delete Slide</a>
+          <a href="#New" class="newicon">New Icon</a>
+          <a href="" class="clearAll">Clear all</a>
+        </div>
+
+        <div class="slider">
+
+        </div>
+
+        <div id="SlideInfo">
+          <div id="SlideLink">
+            <a href=""></a>
+          </div>
+          <div id="Caption">
+            <p class="caption">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+          </div>
+        </div>
+
+
+
+        <div class="Navigation">
+          <a href="#Next" class="next" title="Next slide">Next</a>
+          <a href="#previous" class="previous"  title="Previous slide" >Previous</a>
+          <div class="counter">
+            <a href="#previous" class="previousslide">Previous</a>
+          <span class="count"></span>
+          <a href="#Next" class="nextslide">Next</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="dropbox">
+      <h3>Upload box: </h3>
+    </div>
+
+
+    <form id="gOut" >
+       <textarea rows="150" cols="137" class="gallery"> </textarea>
+    </form>
+
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="js/jquery.uniform.min.js"></script>
+    <script type="text/javascript" src="js/boylstonGallery.js"></script>
+    <script type="text/javascript" src="js/boylstonGalleryEditor.js"></script>
+    <script type="text/javascript" src="js/underscore.js"></script>
+    <script type="text/javascript" src="js/backbone.js"></script>
+    <script type="text/javascript" src="js/backbone-localstorage.js"></script>
+    <script type="text/javascript" src="js/html5uploader.js"></script>
+
+
+
+    <script type="text/javascript">
+      $(function(){
+        window.Slides = new SlideList({ID :"LookBookSlides"});
+        window.gallery = $(".GalleryBoylston").BoylstonGallery();
+        var g = new Galleries({ID: "LookBookGallery"});
+        new GalleryEditor({model:g});
+
+      });
+
+
+    </script>
+
+    <script type="text/template" id="galleryBoylston-template">
+      <div class="GalleryBoylston lookbook" id="<%= title %>">
+        <div class="slider">
+          <%= slides %>
+        </div>
+        <div id="SlideLink">
+          <a href=""></a>
+        </div>
+        <div id="Caption">
+        </div>
+
+        <div class="Navigation">
+          <a href="#Next" class="next" title="Next slide">Next</a>
+          <a href="#previous" class="previous"  title="Previous slide" >Previous</a>
+          <div class="counter">
+            <a href="#previous" class="previousslide">Previous</a>
+            <span class="count"></span>
+
+            <a href="#Next" class="nextslide">Next</a>
+          </div>
+        </div>
+      </div>
+    </script>
+
+    <script type="text/template" id="slideInfo-template">
+      <div id="SlideLink">
+        <a href=""></a>
+      </div>
+      <div id="Caption">
+        <p class="caption"></p>
+      </div>
+    </script>
+
+    <script type="text/template" id="epopup-template">
+      <form class="txt">
+        <input type="text" name="title" value="<%= title %>" />
+        <textarea rows="15" cols="25" name="body"><%= body %> </textarea>
+        <input name="save" type="button" value="Save" />
+        <input name="cancel" type="button" value="Cancel" />
+        <input name="delete" type="button" value="Delete" />
+      </form>
+    </script>
+
+    <script type="text/template" id="ecaption-template">
+      <form class="txt">
+        <div class="row">
+          <input type="text" name="LinkURL" value="<%= LinkURL %>" />
+        </div>
+        <div class="row">
+          <textarea type="text" name="txt"><%= txt %></textarea>
+        </div>
+
+
+        <input name="save" type="button" value="Save" />
+        <input name="cancel" type="button" value="Cancel" />
+
+      </form>
+    </script>
+
+
+    <script type="text/template" id="slide-template">
+      <a href="<%= LinkURL %>">
+        <img src="<%= url %>" alt="<%= title %>" />
+      </a>
+      <div class="icons"></div>
+      <p class="caption"><%= txt %></p>
+
+
+
+    </script>
+
+    <script type="text/template" id="icon-template">
+        <a class="point" href="#" title="<%= title %>"></a>
+        <div class="bubble">
+          <div class="txt">
+            <h3 class="title"><%= title %></h3>
+            <div class="body"><%= body %></div>
+          </div>
+        </div>
+    </script>
+
+
+  </body>
+</html>

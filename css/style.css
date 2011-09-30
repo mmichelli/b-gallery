@@ -191,14 +191,26 @@
 
 .GalleryBoylston .slider .slide .icon a.point{
   display: block;
-  background: url("../images/icon_point.png?t=1");
+  background: url("../images/icon_point.png");
   width: 38px;
   height: 39px;
 }
 
-.GalleryBoylston .slider .slide .icon.active a.point{
-  background: url("../images/icon_active.png?t=1");
+.GalleryBoylston .slider .slide .icon.active a.point,
+.GalleryBoylston .slider .slide .icon a.point:hover
+{
+  background: url("../images/icon_active.png");
 }
+
+.GalleryBoylston.lookbook .slider .slide .icon.active a.point,
+.GalleryBoylston.lookbook .slider .slide .icon a.point:hover
+{
+  background: url("../images/lookbook_hotspot_hover.png");
+}
+
+
+
+
 
 
 .GalleryBoylston .Navigation .next,

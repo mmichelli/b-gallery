@@ -11,7 +11,8 @@
       previous: ".Navigation .previous, .Navigation .previousslide",
       slides : ".slide",
       slideFX : slideSlide,
-      bubbleFX : bubbleFade
+      bubbleFX : bubbleFade,
+      setHash : false
     },
     opts = $.extend(defaults, options),
     index = opts.index,
@@ -152,8 +153,10 @@
 
     function updateHash()
     {
-      if(gallery.attr("id"))
-        window.location.hash  = gallery.attr("id") + "_" +  (index + 1);
+      if(opts.setHash && gallery.attr("id"))
+      {
+         window.location.hash  = gallery.attr("id") + "_" +  (index + 1);
+      }
     }
 
     function incIndex(inc)
