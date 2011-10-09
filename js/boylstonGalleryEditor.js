@@ -340,7 +340,7 @@ $(function() {
 
  window.Gallery = Backbone.Model.extend({
     defaults: function() {
-      return {title: "Title" , id:"--", width:986, height:530 };
+      return {title: "Title" ,  width:986, height:530 };
     }
   });
 
@@ -493,7 +493,7 @@ $(function() {
       }
       else
       {
-        var dg = (this.el.hasClass("small"))? {title: "Small Gallery" , id:"--", width:484, height:460 } :{};
+        var dg = (this.el.hasClass("small"))? {title: "Small Gallery" , width:484, height:460 } :{};
         this.gallery = this.model.create(dg);
 
       }

@@ -29,6 +29,7 @@
   top: 0px;
   left: 0px;
   display: none;
+  width: 100%;
 }
 
 .GalleryBoylston .slider .slide .caption{
@@ -104,11 +105,6 @@
 }
 
 
-.GalleryBoylston.small #SlideInfo form  input[type="text"],
-.GalleryBoylston.small #SlideInfo form  textarea[type="text"]
-{
-  width: 300px;
-}
 
 .GalleryBoylston #SlideInfo p{
   margin: 5px 0 10px 2px
@@ -131,10 +127,7 @@
 
 
 }
-.small #GTitle
-{
-  font-size: 3em;
-}
+
 
 .GalleryBoylston .slider .slide.bottom
 {

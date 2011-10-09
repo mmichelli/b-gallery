@@ -8,7 +8,9 @@
     <title>Boylston</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/uniform.default.css">
-    <div class="GalleryBoylston lookbook" id="EditGallery">
+    <link rel="stylesheet" href="css/jquery-ui-1.8.16.custom.css">
+
+    <div class="GalleryBoylston" id="EditGallery">
       <input type="text" id="GTitle" value="" />
         <div id="Toolbar" >
           <a href="#New" class="newslide">New Slide</a>
@@ -20,7 +22,7 @@
         <div class="slider">
 
         </div>
-
+        <div id="Size">100x400</div>
         <div id="SlideInfo">
           <div id="SlideLink">
             <a href=""></a>
@@ -68,7 +70,7 @@
       $(function(){
         window.Slides = new SlideList({ID :"LookBookSlides"});
         window.gallery = $(".GalleryBoylston").BoylstonGallery();
-        var g = new Galleries({ID: "LookBookGallery"});
+        var g = new Galleries({ID: "Gallery"});
         new GalleryEditor({model:g});
 
       });
@@ -77,16 +79,13 @@
     </script>
 
     <script type="text/template" id="galleryBoylston-template">
-      <div class="GalleryBoylston lookbook" id="<%= title %>">
-        <div class="slider">
+      <div class="GalleryBoylston" id="<%= title %>" style="width:<%= width %>px">
+        <div class="slider" style="width:<%= width %>px; height:<%= height %>px">
           <%= slides %>
         </div>
         <div id="SlideLink">
           <a href=""></a>
         </div>
-        <div id="Caption">
-        </div>
-
         <div class="Navigation">
           <a href="#Next" class="next" title="Next slide">Next</a>
           <a href="#previous" class="previous"  title="Previous slide" >Previous</a>
@@ -97,6 +96,10 @@
             <a href="#Next" class="nextslide">Next</a>
           </div>
         </div>
+        <div id="Caption">
+        </div>
+
+
       </div>
     </script>
 
