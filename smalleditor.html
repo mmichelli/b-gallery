@@ -8,6 +8,8 @@
     <title>Boylston</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/uniform.default.css">
+    <link rel="stylesheet" href="css/jquery-ui-1.8.16.custom.css">
+
     <div class="GalleryBoylston small" id="EditGallery">
       <input type="text" id="GTitle" value="" />
         <div id="Toolbar" >
@@ -31,7 +33,7 @@
         </div>
 
 
-
+        <div id="Size">100x400</div>
         <div class="Navigation">
           <a href="#Next" class="next" title="Next slide">Next</a>
           <a href="#previous" class="previous"  title="Previous slide" >Previous</a>
@@ -43,13 +45,13 @@
       </div>
     </div>
 
-    <div id="dropbox" class="small">
+    <div id="dropbox">
       <h3>Upload box: </h3>
     </div>
 
 
-    <form id="gOut"  class="small">
-       <textarea rows="150" cols="66" class="gallery"> </textarea>
+    <form id="gOut" >
+       <textarea rows="150" cols="137" class="gallery"> </textarea>
     </form>
 
     <script type="text/javascript" src="js/jquery.js"></script>
@@ -65,11 +67,18 @@
 
 
     <script type="text/javascript">
+
       $(function(){
-        window.Slides = new SlideList({ID :"SmallSlides"});
-        window.gallery = $(".GalleryBoylston").BoylstonGallery();
-        var g = new Galleries({ID: "Gallery"});
-        new GalleryEditor({model:g});
+
+
+
+      window.Slides = new SlideList({ID :"SmallSlides"});
+      window.gallery = $(".GalleryBoylston").BoylstonGallery();
+      var g = new Galleries({ID: "Gallery"});
+
+
+
+      new GalleryEditor({model:g});
 
       });
 
@@ -77,16 +86,13 @@
     </script>
 
     <script type="text/template" id="galleryBoylston-template">
-      <div class="GalleryBoylston" id="<%= title %>">
-        <div class="slider">
+      <div class="GalleryBoylston" id="<%= title %>" style="width:<%= width %>px">
+        <div class="slider" style="width:<%= width %>px; height:<%= height %>px">
           <%= slides %>
         </div>
         <div id="SlideLink">
           <a href=""></a>
         </div>
-        <div id="Caption">
-        </div>
-
         <div class="Navigation">
           <a href="#Next" class="next" title="Next slide">Next</a>
           <a href="#previous" class="previous"  title="Previous slide" >Previous</a>
@@ -97,6 +103,10 @@
             <a href="#Next" class="nextslide">Next</a>
           </div>
         </div>
+        <div id="Caption">
+        </div>
+
+
       </div>
     </script>
 

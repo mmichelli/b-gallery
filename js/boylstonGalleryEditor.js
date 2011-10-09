@@ -493,7 +493,8 @@ $(function() {
       }
       else
       {
-        this.gallery = this.model.create({});
+        var dg = (this.el.hasClass("small"))? {title: "Small Gallery" , id:"--", width:484, height:460 } :{};
+        this.gallery = this.model.create(dg);
 
       }
       this.gallery.bind('all',   this.render, this);
