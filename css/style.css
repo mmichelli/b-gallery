@@ -38,6 +38,13 @@
 
 .GalleryBoylston #Caption{
   float: left;
+  margin-top: 9px;
+}
+
+.GalleryBoylston #Caption p.caption
+{
+  margin: 0;
+
 }
 
 .GalleryBoylston #Size{
