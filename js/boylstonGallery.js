@@ -12,6 +12,7 @@
       slides : ".slide",
       slideFX : slideSlide,
       bubbleFX : bubbleFade,
+      buttonsSlideSpeed: 300,
       setHash : false
     },
     opts = $.extend(defaults, options),
@@ -132,7 +133,32 @@
       sdd =  doubleDigit($(opts.slides, gallery).size());
       $(".count", gallery).html(idd+"/"+sdd);
 
+    };
+
+
+
+   function slideArrowsIn()
+    {
+
+
+
     }
+
+
+    gallery.mouseover(function(){
+      $(".Navigation .next", this).stop().animate({'background-position-x': '0px'}, {duration:opts.buttonsSlideSpeed})
+      $(".Navigation .previous", this).stop().animate({'background-position-x': '0px'}, {duration:opts.buttonsSlideSpeed})
+    })
+    .mouseout(function(){
+      $(".Navigation .previous",this).stop().animate({'background-position-x': '-40px'}, {duration:opts.buttonsSlideSpeed});
+      $(".Navigation .next",this).stop().animate({'background-position-x': '80px'}, {duration:opts.buttonsSlideSpeed})
+    })
+
+    function slideArrowsOut()
+    {
+
+    }
+
 
     function hideArrows()
     {
@@ -147,8 +173,6 @@
         previous.show();
         $(".count", gallery).show();
       }
-
-
     }
 
     function updateHash()

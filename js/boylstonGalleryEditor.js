@@ -340,12 +340,13 @@ $(function() {
 
  window.Gallery = Backbone.Model.extend({
     defaults: function() {
-      return {title: "Title" , id:"--" };
+      return {title: "Title" , id:"--", width:986, height:530 };
     }
   });
 
   window.Galleries = Backbone.Collection.extend({
 
+     model: Gallery,
 
     initialize: function(conf) {
       this.localStorage= new Store(conf.ID);
@@ -380,6 +381,31 @@ $(function() {
       this.model.fetch();
       Slides.fetch();
       this.captionEvent();
+      this.addResizeEvents();
+    },
+
+
+    addResizeEvents: function() {
+      var that  = this;
+      this.$(".slider").resizable( {
+        resize: function(event, ui) {
+          that.updateSize(ui.size.width, ui.size.height);
+        },
+        stop: function(event, ui) {
+          that.gallery.set( ui.size ).save();
+        }
+      });
+    },
+
+
+    updateSize: function(w,h) {
+      $("#dropbox,#gOut").css("width", w);
+      this.$("#Size").html(w+"x"+h);
+      this.el.css("width", w);
+      this.$(".slider").css({
+        width: w,
+        height: h
+      });
     },
 
 
@@ -467,7 +493,7 @@ $(function() {
       }
       else
       {
-        this.gallery = this.model.create({title:"Gallery"});
+        this.gallery = this.model.create({});
 
       }
       this.gallery.bind('all',   this.render, this);
@@ -475,11 +501,16 @@ $(function() {
     },
 
     render: function() {
+      this.updateSize(this.gallery.get("width"),this.gallery.get("height") );
       var slider = this.$(".slider").clone(),
-      id = this.gallery.get("title").replace(/ /g, "_")
+      id = this.gallery.get("title").replace(/ /g, "_");
+
       $(".point",slider).removeClass("c");
       $("#GTitle").val(this.gallery.get("title"));
-      $("#gOut .gallery").val(this.outputTemplate({title:id,slides: slider.html()}));
+      $("#gOut .gallery").val(this.outputTemplate({
+        title:id,slides: slider.html(),
+        height: this.gallery.get("height"),
+        width: this.gallery.get("width")}));
       return this;
     }
 

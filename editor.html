@@ -8,6 +8,8 @@
     <title>Boylston</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/uniform.default.css">
+    <link rel="stylesheet" href="css/jquery-ui-1.8.16.custom.css">
+
     <div class="GalleryBoylston" id="EditGallery">
       <input type="text" id="GTitle" value="" />
         <div id="Toolbar" >
@@ -31,7 +33,7 @@
         </div>
 
 
-
+        <div id="Size">100x400</div>
         <div class="Navigation">
           <a href="#Next" class="next" title="Next slide">Next</a>
           <a href="#previous" class="previous"  title="Previous slide" >Previous</a>
@@ -77,8 +79,8 @@
     </script>
 
     <script type="text/template" id="galleryBoylston-template">
-      <div class="GalleryBoylston" id="<%= title %>">
-        <div class="slider">
+      <div class="GalleryBoylston" id="<%= title %>" style="width:<%= width %>">
+        <div class="slider" style="width:<%= width %>; height:<%= height %> ">
           <%= slides %>
         </div>
         <div id="SlideLink">
