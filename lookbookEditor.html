@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="css/uniform.default.css">
     <link rel="stylesheet" href="css/jquery-ui-1.8.16.custom.css">
 
-    <div class="GalleryBoylston" id="EditGallery">
+    <div class="GalleryBoylston lookbook" id="EditGallery">
       <input type="text" id="GTitle" value="" />
         <div id="Toolbar" >
           <a href="#New" class="newslide">New Slide</a>
@@ -79,7 +79,7 @@
     </script>
 
     <script type="text/template" id="galleryBoylston-template">
-      <div class="GalleryBoylston lookbook" id="<%= title %>" style="width:<%= width %>px">
+      <div  class="<%= classes %>"  id="<%= title %>" style="width:<%= width %>px">
         <div class="slider" style="width:<%= width %>px; height:<%= height %>px">
           <%= slides %>
         </div>

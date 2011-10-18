@@ -38,6 +38,10 @@ $(function() {
 
     editBubble: function(){
       var that = this;
+      if(this.$(".bubble").hasClass("editing"))
+      {
+        return false;
+      }
       this.$(".bubble").addClass("editing").html(this.popupTemplate(this.model.toJSON()));
 
       this.$(".bubble input[name='save']").click(function(){
@@ -493,8 +497,9 @@ $(function() {
       }
       else
       {
-        var dg = (this.el.hasClass("small"))? {title: "Small Gallery" , width:484, height:460 } :{};
-        this.gallery = this.model.create(dg);
+        var w = (this.$(".slider").width() > 50)?this.$(".slider").width():986 ;
+        var h = (this.$(".slider").height() > 50)?this.$(".slider").height():530 ;
+        this.gallery = this.model.create( {width:w, height:h });
 
       }
       this.gallery.bind('all',   this.render, this);
@@ -504,12 +509,15 @@ $(function() {
     render: function() {
       this.updateSize(this.gallery.get("width"),this.gallery.get("height") );
       var slider = this.$(".slider").clone(),
+      classes = this.el.attr("class"),
       id = this.gallery.get("title").replace(/ /g, "_");
 
       $(".point",slider).removeClass("c");
       $("#GTitle").val(this.gallery.get("title"));
       $("#gOut .gallery").val(this.outputTemplate({
-        title:id,slides: slider.html(),
+        title:id,
+        slides: slider.html(),
+        classes: classes,
         height: this.gallery.get("height"),
         width: this.gallery.get("width")}));
       return this;

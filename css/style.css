@@ -11,9 +11,17 @@
 .GalleryBoylston .slider{
   position: relative;
   overflow: visible;
-  width: 986px;
+  width: 786px;
   height: 530px;
 }
+
+
+.GalleryBoylston.small .slider{
+  width: 484px;
+  height: 460px;
+}
+
+
 
 .GalleryBoylston .slider img[src*="1.png"],
 .GalleryBoylston .slider img[src*="2.png"],
