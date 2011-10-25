@@ -2,8 +2,6 @@
 (function($){
 
   var BoylstonGallery  = function(el, options) {
-
-
     var gallery = el,
     defaults = {
       index : 0,
@@ -42,10 +40,7 @@
       return false;
     });
 
-
     function addMethods(){
-
-
       self.addClickEvents = function()
       {
         $(".icon a.point:not(.c)" , gallery).addClass("c").click(clickPoint);
@@ -85,8 +80,6 @@
         }
       };
     }
-
-
 
     function clickPoint()
     {

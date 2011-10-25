@@ -512,6 +512,8 @@ $(function() {
       classes = this.el.attr("class"),
       id = this.gallery.get("title").replace(/ /g, "_");
 
+      $(".slide",slider).removeAttr("style");
+
       $(".point",slider).removeClass("c");
       $("#GTitle").val(this.gallery.get("title"));
       $("#gOut .gallery").val(this.outputTemplate({

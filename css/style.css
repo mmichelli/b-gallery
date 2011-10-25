@@ -112,21 +112,23 @@
   margin: 5px 0 10px 2px;
 }
 
-
-
 .GalleryBoylston #SlideInfo p{
   margin: 5px 0 10px 2px
 
 }
 
+.GalleryBoylston .slider .slide
+{
+  display: none;
+}
 
 .GalleryBoylston .slider .slide.top,
 .GalleryBoylston .slider .slide.bottom
 {
   display: block;
   z-index: 100;
-
 }
+
 #GTitle
 {
   border: 0px;
