@@ -12,6 +12,7 @@
       bubbleFX : bubbleFade,
       buttonsSlideSpeed: 300,
       setHash : false,
+      autoSlideInterval: 4000,
       autoSlide: true,
     },
     opts = $.extend(defaults, options),
@@ -98,7 +99,7 @@
         nextTick = window.setTimeout(function() {
           direction = "right";
           incIndex(1);
-        }, 4000);
+        }, opts.autoSlideInterval);
       }
     }
 
