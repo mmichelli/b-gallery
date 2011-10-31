@@ -11,7 +11,8 @@
       slideFX : slideSlide,
       bubbleFX : bubbleFade,
       buttonsSlideSpeed: 300,
-      setHash : false
+      setHash : false,
+      autoSlide: true,
     },
     opts = $.extend(defaults, options),
     index = opts.index,
@@ -22,11 +23,14 @@
     bubbleFX = opts.bubbleFX,
     self = this,
     direction= "";
+    nextTick = 0;
 
     addMethods();
     this.jumpToHash();
     this.addClickEvents();
     updateCounter();
+
+    tick();
 
     next.click(function() {
       direction = "right";
@@ -61,6 +65,8 @@
         update();
       }
 
+
+
       self.jumpToHash = function ()
       {
 
@@ -79,6 +85,21 @@
           setIndex(0);
         }
       };
+    }
+
+    function clearSlideTimeout()
+    {
+      window.clearTimeout(nextTick);
+    }
+
+    function tick(){
+      if(opts.autoSlide) {
+        clearSlideTimeout();
+        nextTick = window.setTimeout(function() {
+          direction = "right";
+          incIndex(1);
+        }, 4000);
+      }
     }
 
     function clickPoint()
@@ -102,10 +123,7 @@
     function closeBubbles()
     {
       $(".icon" , gallery).siblings().removeClass("active");
-
     }
-
-
 
     function updateSlider()
     {
@@ -115,9 +133,7 @@
       $("#Caption",gallery).html("");
       $("#Caption",gallery).append($(".slide.top p.caption").clone());
       $("#SlideLink a",gallery).attr("href",$(".slide.top a:first").attr("href"));
-
       $("#SlideLink a",gallery).html($(".slide.top a:first").attr("href"));
-
     }
 
     function updateCounter()
@@ -125,32 +141,17 @@
       var idd = doubleDigit(index + 1),
       sdd =  doubleDigit($(opts.slides, gallery).size());
       $(".count", gallery).html(idd+"/"+sdd);
-
     };
-
-
-
-   function slideArrowsIn()
-    {
-
-
-
-    }
-
 
     gallery.mouseover(function(){
       $(".Navigation .next", this).stop().animate({'background-position-x': '0px'}, {duration:opts.buttonsSlideSpeed})
       $(".Navigation .previous", this).stop().animate({'background-position-x': '0px'}, {duration:opts.buttonsSlideSpeed})
     })
+
     .mouseout(function(){
       $(".Navigation .previous",this).stop().animate({'background-position-x': '-40px'}, {duration:opts.buttonsSlideSpeed});
       $(".Navigation .next",this).stop().animate({'background-position-x': '80px'}, {duration:opts.buttonsSlideSpeed})
     })
-
-    function slideArrowsOut()
-    {
-
-    }
 
 
     function hideArrows()
@@ -180,6 +181,7 @@
     {
       closeBubbles();
       setIndex(self.getIndex() + inc);
+      tick();
 
     }
 
@@ -201,8 +203,6 @@
       index = (-1 == index)?$(opts.slides, gallery).size() - 1:index;
       index = Math.max(0, index);
     }
-
-
 
     function setIndex(i) {
 

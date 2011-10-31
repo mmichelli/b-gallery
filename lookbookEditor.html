@@ -69,7 +69,7 @@
     <script type="text/javascript">
       $(function(){
         window.Slides = new SlideList({ID :"LookBookSlides"});
-        window.gallery = $(".GalleryBoylston").BoylstonGallery();
+        window.gallery = $(".GalleryBoylston").BoylstonGallery({autoSlide:false});
         var g = new Galleries({ID: "LookBookGallery"});
         new GalleryEditor({model:g});
 
