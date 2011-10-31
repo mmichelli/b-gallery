@@ -140,9 +140,16 @@
 
 
     <script type="text/template" id="slide-template">
+      <% if (LinkURL != "") { %>
       <a href="<%= LinkURL %>">
+        <%}%>
+
         <img src="<%= url %>" alt="<%= title %>" />
+
+        <% if (LinkURL != "") { %>
       </a>
+      <%}%>
+
       <div class="icons"></div>
       <p class="caption"><%= txt %></p>
 

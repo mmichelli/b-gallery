@@ -209,7 +209,7 @@ $(function() {
     },
 
     defaults: function() {
-      return { url:"images/1.png", title: "Title", icons: new Icons() , LinkURL: "./", txt:"Lorem ipsum dolor sit amet, consectetuer adipiscing elit." };
+      return { url:"images/1.png", title: "Title", icons: new Icons() , LinkURL: "", txt:"Lorem ipsum dolor sit amet, consectetuer adipiscing elit." };
     }
     ,
     newIcon: function()
