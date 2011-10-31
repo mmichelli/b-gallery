@@ -97,8 +97,17 @@
       if(opts.autoSlide) {
         clearSlideTimeout();
         nextTick = window.setTimeout(function() {
-          direction = "right";
-          incIndex(1);
+          var activePoints = $(".bubble:visible", gallery ).size();
+          if( activePoints === 0) {
+            direction = "right";
+            incIndex(1);
+          }
+          else
+          {
+            tick();
+          }
+
+
         }, opts.autoSlideInterval);
       }
     }
@@ -123,7 +132,7 @@
 
     function closeBubbles()
     {
-      $(".icon" , gallery).siblings().removeClass("active");
+      $(".icon" , gallery).removeClass("active");
     }
 
     function updateSlider()
