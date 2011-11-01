@@ -23,8 +23,9 @@
     slideFX = opts.slideFX,
     bubbleFX = opts.bubbleFX,
     self = this,
-    direction= "";
-    nextTick = 0;
+    direction = "",
+    nextTick = 0,
+    activeNoTicking = false;
 
     addMethods();
     this.jumpToHash();
@@ -98,7 +99,7 @@
         clearSlideTimeout();
         nextTick = window.setTimeout(function() {
           var activePoints = $(".bubble:visible", gallery ).size();
-          if( activePoints === 0) {
+          if( activePoints === 0 && !activeNoTicking) {
             direction = "right";
             incIndex(1);
           }
@@ -154,14 +155,17 @@
     };
 
     gallery.mouseover(function(){
-      $(".Navigation .next", this).stop().animate({'background-position-x': '0px'}, {duration:opts.buttonsSlideSpeed})
-      $(".Navigation .previous", this).stop().animate({'background-position-x': '0px'}, {duration:opts.buttonsSlideSpeed})
+      activeNoTicking = true;
+      $(".Navigation .next span", this).stop().animate({'margin-left': 0}, {duration:opts.buttonsSlideSpeed})
+      $(".Navigation .previous span", this).stop().animate({'margin-left': 0}, {duration:opts.buttonsSlideSpeed})
     })
 
-    .mouseout(function(){
-      $(".Navigation .previous",this).stop().animate({'background-position-x': '-40px'}, {duration:opts.buttonsSlideSpeed});
-      $(".Navigation .next",this).stop().animate({'background-position-x': '80px'}, {duration:opts.buttonsSlideSpeed})
-    })
+      .mouseout(function(){
+        activeNoTicking = false;
+        tick();
+        $(".Navigation .previous span",this).stop().animate({'margin-left': -40}, {duration:opts.buttonsSlideSpeed});
+        $(".Navigation .next span",this).stop().animate({'margin-left': 40}, {duration:opts.buttonsSlideSpeed})
+      })
 
 
     function hideArrows()
@@ -183,7 +187,7 @@
     {
       if(opts.setHash && gallery.attr("id"))
       {
-         window.location.hash  = gallery.attr("id") + "_" +  (index + 1);
+        window.location.hash  = gallery.attr("id") + "_" +  (index + 1);
       }
     }
 
@@ -237,7 +241,7 @@
 
     function captionFX()
     {
-        $("#Caption",gallery).hide();
+      $("#Caption",gallery).hide();
       $("#Caption",gallery).clearQueue().fadeOut(500).delay(500).fadeIn(500);
     }
 
