@@ -96,6 +96,7 @@
 
     function tick(){
       if(opts.autoSlide) {
+        console.log(".");
         clearSlideTimeout();
         nextTick = window.setTimeout(function() {
           var activePoints = $(".bubble:visible", gallery ).size();

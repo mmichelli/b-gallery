@@ -327,6 +327,8 @@
 .GalleryBoylston .Navigation .count
 {
   float: left;
+  width: 35px;
+  text-align: center;
 
 }
 
@@ -430,4 +432,3 @@
   overflow: hidden;
 
 }
-
