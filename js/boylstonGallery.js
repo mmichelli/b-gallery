@@ -143,7 +143,7 @@
       $(opts.slides, gallery).filter(".top").removeClass("top").addClass("bottom");
       $($(opts.slides, gallery).get(index)).addClass("top").removeClass("bottom");
       $("#Caption",gallery).html("");
-      $("#Caption",gallery).append($(".slide.top p.caption").clone());
+      $("#Caption",gallery).append($(".slide.top p.caption",gallery).clone());
       $("#SlideLink a",gallery).attr("href",$(".slide.top a:first").attr("href"));
       $("#SlideLink a",gallery).html($(".slide.top a:first").attr("href"));
     }
@@ -296,19 +296,15 @@
 
 
   $.fn.BoylstonGallery =  function(options) {
-    return new BoylstonGallery(this, options);
+    var bgs = [];
+    $(this).each(function() {
+      bgs.push(new BoylstonGallery($(this), options));
+    });
+    if(bgs.length == 1)
+      return bgs[0]
+    else
+      return  bgs;
   };
 
 }
 )(jQuery);
-
-
-
-
-
-
-
-
-
-
-
