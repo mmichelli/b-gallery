@@ -144,8 +144,8 @@
       $($(opts.slides, gallery).get(index)).addClass("top").removeClass("bottom");
       $("#Caption",gallery).html("");
       $("#Caption",gallery).append($(".slide.top p.caption",gallery).clone());
-      $("#SlideLink a",gallery).attr("href",$(".slide.top a:first").attr("href"));
-      $("#SlideLink a",gallery).html($(".slide.top a:first").attr("href"));
+      $("#SlideLink a",gallery).attr("href",$(".slide.top a:first",gallery).attr("href"));
+      $("#SlideLink a",gallery).html($(".slide.top a:first",gallery).attr("href"));
     }
 
     function updateCounter()
@@ -157,15 +157,15 @@
 
     gallery.mouseover(function(){
       activeNoTicking = true;
-      $(".Navigation .next span", this).stop().animate({'margin-left': 0}, {duration:opts.buttonsSlideSpeed})
-      $(".Navigation .previous span", this).stop().animate({'margin-left': 0}, {duration:opts.buttonsSlideSpeed})
+      $(".Navigation .next span", gallery).stop().animate({'margin-left': 0}, {duration:opts.buttonsSlideSpeed})
+      $(".Navigation .previous span", gallery).stop().animate({'margin-left': 0}, {duration:opts.buttonsSlideSpeed})
     })
 
       .mouseout(function(){
         activeNoTicking = false;
         tick();
-        $(".Navigation .previous span",this).stop().animate({'margin-left': -40}, {duration:opts.buttonsSlideSpeed});
-        $(".Navigation .next span",this).stop().animate({'margin-left': 40}, {duration:opts.buttonsSlideSpeed})
+        $(".Navigation .previous span",gallery).stop().animate({'margin-left': -40}, {duration:opts.buttonsSlideSpeed});
+        $(".Navigation .next span",gallery).stop().animate({'margin-left': 40}, {duration:opts.buttonsSlideSpeed})
       })
 
 
