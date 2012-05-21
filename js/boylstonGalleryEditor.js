@@ -156,7 +156,7 @@ $(function() {
     path:"data/",
 
     addImages: function(file) {
-      this.images.create({name:file.fileName, url:this.path+file.fileName});
+      this.images.create({name:file.name, url:this.path+file.name});
     },
 
     initialize: function() {
